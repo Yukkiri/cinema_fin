@@ -1,6 +1,8 @@
 package ru.puchkova.restcinemahometask.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 import ru.puchkova.restcinemahometask.data.entity.MovieEntity;
 
@@ -9,17 +11,25 @@ import java.util.Set;
 
 public class EventDto {
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @JsonProperty("date")
     private String time;
     @JsonProperty("movie")
     private MovieDto movie;
-    @JsonProperty("cinema")
-    private CinemaDto cinema;
+    @JsonProperty("hall")
+    private HallEntity hall;
+
+    public EventDto() {
+        super();
+    }
 
     public EventDto(String time, MovieEntity movie, HallEntity hall) {
+        super();
         this.time = time;
         this.movie = new MovieDto(movie.getId(), movie.getName(), movie.getDescription(), movie.getReleaseYear(), movie.getCountry());
-        this.cinema = new CinemaDto(hall.getCinema().getId(), hall.getCinema().getName(), hall.getCinema().getAddress(), hall.getCinema().getPhone());
+        this.hall = hall;
     }
 
     public String getTime() {
@@ -38,25 +48,17 @@ public class EventDto {
         this.movie = movie;
     }
 
-    public CinemaDto getCinema() {
-        return cinema;
-    }
-
-    public void setCinema(CinemaDto cinema) {
-        this.cinema = cinema;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EventDto)) return false;
         EventDto eventDto = (EventDto) o;
-        return getTime().equals(eventDto.getTime()) && getMovie().equals(eventDto.getMovie()) && getCinema().equals(eventDto.getCinema());
+        return getTime().equals(eventDto.getTime()) && getMovie().equals(eventDto.getMovie()) && hall.equals(eventDto.hall);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTime(), getMovie(), getCinema());
+        return Objects.hash(getTime(), getMovie(), hall);
     }
 
     @Override
@@ -64,7 +66,7 @@ public class EventDto {
         return "EventDto{" +
                 "time='" + time + '\'' +
                 ", movie=" + movie +
-                ", cinema=" + cinema +
+                ", hall=" + hall +
                 '}';
     }
 }

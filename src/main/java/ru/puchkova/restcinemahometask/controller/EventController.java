@@ -2,14 +2,10 @@ package ru.puchkova.restcinemahometask.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ru.puchkova.restcinemahometask.DTO.CinemaDetailedDto;
-import ru.puchkova.restcinemahometask.DTO.CinemaDto;
 import ru.puchkova.restcinemahometask.DTO.EventDto;
-import ru.puchkova.restcinemahometask.service.impl.CinemaServiceImpl;
 import ru.puchkova.restcinemahometask.service.impl.EventServiceImpl;
 
 import java.util.List;
@@ -28,7 +24,7 @@ public class EventController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @RequestMapping(value = "/events/", method = RequestMethod.GET)
+    @RequestMapping(value = "/events", method = RequestMethod.GET)
     public List<EventDto> all() {
         var events = eventService.getAllEvents();
         return events.stream().map(eventEntity -> modelMapper.map(eventEntity, EventDto.class)

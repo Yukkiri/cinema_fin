@@ -23,12 +23,6 @@ public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
 
     @Autowired
-    CinemaServiceImpl cinemaService;
-
-    @Autowired
-    MovieServiceImpl movieService;
-
-    @Autowired
     public EventServiceImpl(EventRepository eventRepository){
         this.eventRepository = eventRepository;
     }

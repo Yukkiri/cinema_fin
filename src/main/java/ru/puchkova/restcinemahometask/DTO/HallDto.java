@@ -4,7 +4,6 @@ package ru.puchkova.restcinemahometask.DTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.puchkova.restcinemahometask.data.entity.EventEntity;
 
 import java.util.Objects;
 import java.util.Set;
