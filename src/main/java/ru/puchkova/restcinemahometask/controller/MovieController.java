@@ -21,9 +21,6 @@ public class MovieController {
 
     @Autowired
     private ModelMapper modelMapper;
-//
-//    @Autowired
-//    private MovieRepository repository;
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
     public List<MovieDto> all() {
@@ -37,25 +34,4 @@ public class MovieController {
         var movieEntity = movieService.findMovieByID(id);
         return modelMapper.map(movieEntity, MovieDto.class);
     }
-
-//    @GetMapping("/movies")
-//    List<MovieDto> all() {
-//        var movies = repository.findAll();
-//
-//        return movies.stream().map(movieEntity ->
-//                modelMapper.map(movieEntity, MovieDto.class)
-//        ).collect(Collectors.toList());
-//    }
-//
-//    @GetMapping("/movies/{id}")
-//    MovieDetailsDto one(@PathVariable Long id) {
-//        var movieEntity = repository.findById(id)
-//                .orElseThrow(() -> new MovieNotFoundException(id));
-//        return modelMapper.map(movieEntity, MovieDetailsDto.class);
-//    }
-//
-//    @GetMapping("/movies/{id}/cinemas")
-//    List<CinemaDto> cinemas(@PathVariable Long id) {
-//        throw new UnsupportedOperationException("Not implemented yet");
-//    }
 }

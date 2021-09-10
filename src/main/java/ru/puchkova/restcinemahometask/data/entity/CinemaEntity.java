@@ -1,12 +1,7 @@
 package ru.puchkova.restcinemahometask.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,6 +12,8 @@ public class CinemaEntity extends BaseEntity {
     private String name;
     private String address;
     private String phone;
+    @OneToMany(mappedBy = "cinema")
+    private Set<HallEntity> halls;
 
     public CinemaEntity() {
         super();
@@ -28,9 +25,6 @@ public class CinemaEntity extends BaseEntity {
         this.address = address;
         this.phone = phone;
     }
-
-    @OneToMany(mappedBy = "cinema")
-    private Set<HallEntity> halls;
 
     public String getName() {
         return name;
@@ -64,26 +58,4 @@ public class CinemaEntity extends BaseEntity {
         this.halls = halls;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CinemaEntity that = (CinemaEntity) o;
-        return name.equals(that.name) && address.equals(that.address) && phone.equals(that.phone);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, address, phone);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder cinemaInfo = new StringBuilder("CinemaEntity{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' );
-
-        return cinemaInfo.toString();
-    }
 }

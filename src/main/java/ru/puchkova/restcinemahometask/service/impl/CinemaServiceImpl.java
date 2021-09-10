@@ -3,6 +3,7 @@ package ru.puchkova.restcinemahometask.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.puchkova.restcinemahometask.DTO.CinemaDetailedDto;
+import ru.puchkova.restcinemahometask.DTO.CinemaDto;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
@@ -18,6 +19,8 @@ import java.util.Set;
 public class CinemaServiceImpl implements CinemaService {
 
     private final CinemaRepository cinemaRepository;
+
+    @Autowired
     private HallServiceImpl hallService;
 
 
@@ -52,5 +55,9 @@ public class CinemaServiceImpl implements CinemaService {
 
     public void deleteCinemaByID(Long id) {
         cinemaRepository.deleteById(id);
+    }
+
+    public CinemaDto cinemaEntityToDto(CinemaEntity cinemaEntity){
+        return new CinemaDto(cinemaEntity.getId(), cinemaEntity.getName(), cinemaEntity.getAddress(), cinemaEntity.getPhone());
     }
 }

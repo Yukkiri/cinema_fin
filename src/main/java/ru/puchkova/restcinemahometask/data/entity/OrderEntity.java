@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+//NOT READY
 @Entity
 public class OrderEntity extends BaseEntity{
 

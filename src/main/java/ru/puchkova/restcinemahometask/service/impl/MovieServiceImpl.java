@@ -2,6 +2,7 @@ package ru.puchkova.restcinemahometask.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.puchkova.restcinemahometask.DTO.MovieDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.MovieEntity;
 import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
@@ -39,5 +40,9 @@ public class MovieServiceImpl implements MovieService {
 
     public void deleteFilmByID(Long id) {
         movieRepository.deleteById(id);
+    }
+
+    public MovieDto movieEntityToDto(MovieEntity movieEntity){
+        return new MovieDto(movieEntity.getId(), movieEntity.getName(), movieEntity.getDescription(), movieEntity.getReleaseYear(), movieEntity.getCountry());
     }
 }

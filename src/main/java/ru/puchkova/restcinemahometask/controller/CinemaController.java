@@ -37,36 +37,9 @@ public class CinemaController {
         ).collect(Collectors.toList());
     }
 
-//    @RequestMapping(value = "/cinemas/{id}", method = RequestMethod.GET)
-//    public CinemaEntity searchMovie(@PathVariable Long id) {
-//        return cinemaService.findCinemaByID(id);
-//    }
-
     @RequestMapping(value = "/cinemas/{id}", method = RequestMethod.GET)
     public CinemaDetailedDto searchCinema(@PathVariable Long id) {
         var cinemaEntity = cinemaService.findCinemaByID(id);
         return modelMapper.map(cinemaEntity, CinemaDetailedDto.class);
     }
-
-
-
-//    @Autowired
-//    private CinemaRepository repository;
-//
-//
-//
-//
-//    CinemaController(CinemaRepository repository) {
-//        this.repository = repository;
-//    }
-//
-//    @GetMapping("/cinemas")
-//    List<CinemaDto> all() {
-//        throw new UnsupportedOperationException("Not implemented yet");
-//    }
-//
-//    @GetMapping("/cinemas/{id}/schedule")
-//    List<CinemaScheduleDto> schedule() {
-//        throw new UnsupportedOperationException("Not implemented yet");
-//    }
 }

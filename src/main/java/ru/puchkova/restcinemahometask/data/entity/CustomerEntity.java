@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
+
+//NOT READY YET
 @Entity
 public class CustomerEntity extends BaseEntity{
 

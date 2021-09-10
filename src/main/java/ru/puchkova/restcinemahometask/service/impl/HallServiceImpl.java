@@ -2,18 +2,24 @@ package ru.puchkova.restcinemahometask.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.puchkova.restcinemahometask.DTO.CinemaEventsDto;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 import ru.puchkova.restcinemahometask.data.repository.HallRepository;
 import ru.puchkova.restcinemahometask.service.HallService;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class HallServiceImpl implements HallService {
 
     private final HallRepository hallRepository;
+
+    @Autowired
+    private EventServiceImpl eventService;
 
     @Autowired
     public HallServiceImpl(HallRepository hallRepository){
@@ -28,7 +34,7 @@ public class HallServiceImpl implements HallService {
     public Set<HallDto> findHalls(Set<HallEntity> hallEntitySet) {
         Set<HallDto> hallDtoSet = new HashSet();
         for (HallEntity hallEntity : hallEntitySet) {
-            HallDto hallDto = new HallDto(hallEntity.getId(), hallEntity.getName(), hallEntity.getEvents());
+            HallDto hallDto = new HallDto(hallEntity.getId(), hallEntity.getName(), eventService.getCinemaEvents(hallEntity));
             hallDtoSet.add(hallDto);
         }
         return hallDtoSet;
@@ -41,7 +47,7 @@ public class HallServiceImpl implements HallService {
 
     public HallDto findHallByID(Long id) {
         HallEntity hallEntity = searchHallByID(id);
-        HallDto hallDto = new HallDto(hallEntity.getId(), hallEntity.getName(), hallEntity.getEvents());
+        HallDto hallDto = new HallDto(hallEntity.getId(), hallEntity.getName(), eventService.getCinemaEvents(hallEntity));
         return hallDto;
     }
 

@@ -70,25 +70,4 @@ public class HallEntity extends BaseEntity{
         this.events = events;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HallEntity that = (HallEntity) o;
-        return name.equals(that.name) && cinema.equals(that.cinema);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, cinema);
-    }
-
-    @Override
-    public String toString() {
-        return "HallEntity{" +
-                "name='" + name + '\'' +
-                ", rows=" + rows +
-                ", events=" + events +
-                '}';
-    }
 }

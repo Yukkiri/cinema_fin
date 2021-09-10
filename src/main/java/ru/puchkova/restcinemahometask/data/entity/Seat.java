@@ -13,7 +13,6 @@ class Seat {
     private RowEntity row;
 
 
-
     public RowEntity getRow() {
         return row;
     }

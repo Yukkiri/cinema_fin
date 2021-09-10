@@ -1,5 +1,6 @@
 package ru.puchkova.restcinemahometask.service;
 
+import ru.puchkova.restcinemahometask.DTO.EventDto;
 import ru.puchkova.restcinemahometask.data.entity.EventEntity;
 
 import java.util.List;
