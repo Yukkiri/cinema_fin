@@ -88,7 +88,7 @@ public class MovieDto {
     @Override
     public String toString() {
         return "MovieDto{" +
-                "id=" + id +
+                "id =" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", releaseYear='" + releaseYear + '\'' +

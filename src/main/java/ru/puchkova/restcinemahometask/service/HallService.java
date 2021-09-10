@@ -8,9 +8,9 @@ import java.util.Set;
 
 public interface HallService {
 
-    List<HallEntity> getAllHall();
+    Set<HallDto> getAllHall();
 
-    Set<HallDto> findHallByID(Set<HallEntity> hallEntitySet);
+    HallDto findHallByID(Long id);
 
     void deleteHallByID(Long id);
 

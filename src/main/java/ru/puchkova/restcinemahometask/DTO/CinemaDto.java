@@ -73,7 +73,7 @@ public class CinemaDto {
     public String toString() {
         return "CinemaDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + name + "\'" +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';

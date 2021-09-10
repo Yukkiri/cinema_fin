@@ -43,7 +43,7 @@ public class CinemaController {
 //    }
 
     @RequestMapping(value = "/cinemas/{id}", method = RequestMethod.GET)
-    public CinemaDetailedDto searchMovie(@PathVariable Long id) {
+    public CinemaDetailedDto searchCinema(@PathVariable Long id) {
         var cinemaEntity = cinemaService.findCinemaByID(id);
         return modelMapper.map(cinemaEntity, CinemaDetailedDto.class);
     }

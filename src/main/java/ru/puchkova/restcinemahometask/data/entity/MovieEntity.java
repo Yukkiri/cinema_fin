@@ -120,12 +120,12 @@ public class MovieEntity extends BaseEntity {
 //        return Objects.hash(id, name, description, releaseYear);
 //    }
 //
-//    @Override
-//    public String toString() {
-//        return "Movie{" +
-//                "name='" + name + '\'' +
-//                ", releaseYear='" + releaseYear + '\'' +
-//                ", description ='" + description + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
+                ", description ='" + description + '\'' +
+                '}';
+    }
 }

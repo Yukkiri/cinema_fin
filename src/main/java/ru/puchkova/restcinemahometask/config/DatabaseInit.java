@@ -5,18 +5,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
-import ru.puchkova.restcinemahometask.data.entity.HallEntity;
-import ru.puchkova.restcinemahometask.data.entity.MovieEntity;
-import ru.puchkova.restcinemahometask.data.entity.RowEntity;
+import ru.puchkova.restcinemahometask.data.entity.*;
 import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
+import ru.puchkova.restcinemahometask.data.repository.EventRepository;
 import ru.puchkova.restcinemahometask.data.repository.HallRepository;
 import ru.puchkova.restcinemahometask.data.repository.MovieRepository;
 import ru.puchkova.restcinemahometask.service.impl.CinemaServiceImpl;
+import ru.puchkova.restcinemahometask.service.impl.HallServiceImpl;
+import ru.puchkova.restcinemahometask.service.impl.MovieServiceImpl;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
+
 
 @Configuration
 public class DatabaseInit {
@@ -76,6 +76,25 @@ public class DatabaseInit {
             ));
             log.info("Insert " + repository.save(
                     new HallEntity("second", cinemaService.searchCinemaByID(5L), hallsRows(LARGE_HALL_ROWS, LARGE_HALL_SEATS))
+            ));
+        };
+    }
+
+    @Bean
+    CommandLineRunner initEvents(EventRepository repository, MovieServiceImpl movieService, HallServiceImpl hallService) {
+
+        return args -> {
+            log.info("Insert " + repository.save(
+                    new EventEntity("23.12.2021 10:30", movieService.findMovieByID(1L), hallService.searchHallByID(7L))
+            ));
+            log.info("Insert " + repository.save(
+                    new EventEntity("23.12.2021 21:00", movieService.findMovieByID(2L), hallService.searchHallByID(8L))
+            ));
+            log.info("Insert " + repository.save(
+                    new EventEntity("23.12.2021 15:10", movieService.findMovieByID(3L), hallService.searchHallByID(9L))
+            ));
+            log.info("Insert " + repository.save(
+                    new EventEntity("23.12.2021 18:15", movieService.findMovieByID(1L), hallService.searchHallByID(10L))
             ));
         };
     }

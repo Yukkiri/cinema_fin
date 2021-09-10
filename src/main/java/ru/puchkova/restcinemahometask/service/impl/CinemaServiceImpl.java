@@ -6,6 +6,7 @@ import ru.puchkova.restcinemahometask.DTO.CinemaDetailedDto;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
+import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
 import ru.puchkova.restcinemahometask.data.repository.HallRepository;
 import ru.puchkova.restcinemahometask.service.CinemaService;
@@ -17,7 +18,6 @@ import java.util.Set;
 public class CinemaServiceImpl implements CinemaService {
 
     private final CinemaRepository cinemaRepository;
-    private HallRepository hallRepository;
     private HallServiceImpl hallService;
 
 
@@ -33,10 +33,9 @@ public class CinemaServiceImpl implements CinemaService {
     }
 
     public CinemaDetailedDto findCinemaByID(Long id) {
-        hallService = new HallServiceImpl(hallRepository);
         CinemaEntity cinemaEntity = cinemaRepository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(id));
-        Set<HallDto> halls = hallService.findHallByID(cinemaEntity.getHalls());
+        Set<HallDto> halls = hallService.findHalls(cinemaEntity.getHalls());
         CinemaDetailedDto cinemaDetailed = new CinemaDetailedDto(cinemaEntity.getId(), cinemaEntity.getName(), cinemaEntity.getAddress(),
                 cinemaEntity.getPhone(), halls);
         return cinemaDetailed;

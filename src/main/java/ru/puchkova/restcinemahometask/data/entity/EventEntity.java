@@ -10,7 +10,18 @@ import java.util.Set;
 @Entity
 public class EventEntity extends BaseEntity{
 
-    private LocalDateTime time;
+    private String time;
+
+    public EventEntity() {
+        super();
+    }
+
+    public EventEntity(String time, MovieEntity movie, HallEntity hall) {
+        super();
+        this.time = time;
+        this.movie = movie;
+        this.hall = hall;
+    }
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
@@ -23,11 +34,11 @@ public class EventEntity extends BaseEntity{
     @OneToMany(mappedBy = "event")
     private Set<OrderEntity> orders;
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

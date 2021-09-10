@@ -4,9 +4,11 @@ package ru.puchkova.restcinemahometask.DTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.puchkova.restcinemahometask.data.entity.EventEntity;
 import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class HallDto {
 
@@ -17,12 +19,15 @@ public class HallDto {
     private long id;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("events")
+    private Set<EventEntity> events;
 
     public HallDto(){}
 
-    public HallDto(long id, String name) {
+    public HallDto(long id, String name, Set<EventEntity> eventDto) {
         this.id = id;
         this.name = name;
+        this.events = eventDto;
     }
 
     public long getId() {
@@ -39,6 +44,14 @@ public class HallDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<EventEntity> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<EventEntity> events) {
+        this.events = events;
     }
 
     @Override
@@ -59,6 +72,7 @@ public class HallDto {
         return "HallDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", events='" + events + '\'' +
                 '}';
     }
 }
