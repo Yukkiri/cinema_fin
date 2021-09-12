@@ -2,7 +2,6 @@ package ru.puchkova.restcinemahometask.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.puchkova.restcinemahometask.DTO.CinemaEventsDto;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.HallEntity;
@@ -10,7 +9,6 @@ import ru.puchkova.restcinemahometask.data.repository.HallRepository;
 import ru.puchkova.restcinemahometask.service.HallService;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -22,7 +20,7 @@ public class HallServiceImpl implements HallService {
     private EventServiceImpl eventService;
 
     @Autowired
-    public HallServiceImpl(HallRepository hallRepository){
+    public HallServiceImpl(HallRepository hallRepository) {
         this.hallRepository = hallRepository;
     }
 
@@ -40,7 +38,7 @@ public class HallServiceImpl implements HallService {
         return hallDtoSet;
     }
 
-    public HallEntity searchHallByID(Long id){
+    public HallEntity searchHallByID(Long id) {
         return hallRepository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(id));
     }

@@ -4,7 +4,8 @@ public class GenericErrorDto {
 
     private String errorText;
 
-    public GenericErrorDto() { }
+    public GenericErrorDto() {
+    }
 
     public GenericErrorDto(String errorText) {
         this.errorText = errorText;

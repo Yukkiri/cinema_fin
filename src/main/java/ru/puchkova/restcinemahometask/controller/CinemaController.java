@@ -2,16 +2,13 @@ package ru.puchkova.restcinemahometask.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-//import ru.puchkova.restcinemahometask.controller.dto.CinemaDto;
-//import ru.puchkova.restcinemahometask.controller.dto.CinemaScheduleDto;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import ru.puchkova.restcinemahometask.DTO.CinemaDetailedDto;
 import ru.puchkova.restcinemahometask.DTO.CinemaDto;
-import ru.puchkova.restcinemahometask.DTO.MovieDto;
-import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
-import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
 import ru.puchkova.restcinemahometask.service.impl.CinemaServiceImpl;
-import ru.puchkova.restcinemahometask.service.impl.MovieServiceImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,14 +18,13 @@ public class CinemaController {
 
 
     private final CinemaServiceImpl cinemaService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     public CinemaController(CinemaServiceImpl cinemaService) {
         this.cinemaService = cinemaService;
     }
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @RequestMapping(value = "/cinemas", method = RequestMethod.GET)
     List<CinemaDto> all() {

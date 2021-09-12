@@ -5,10 +5,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class RowEntity extends BaseEntity{
+public class RowEntity extends BaseEntity {
 
     private int row;
     private int seats;
+    @ManyToOne
+    @JoinColumn(name = "hall_id")
+    private HallEntity hall;
 
     public RowEntity() {
     }
@@ -17,10 +20,6 @@ public class RowEntity extends BaseEntity{
         this.row = row;
         this.seats = seats;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "hall_id")
-    private HallEntity hall;
 
     public int getRow() {
         return row;

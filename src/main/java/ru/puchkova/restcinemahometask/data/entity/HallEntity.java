@@ -6,14 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class HallEntity extends BaseEntity{
+public class HallEntity extends BaseEntity {
 
     private String name;
-
+    @ManyToOne
+    @JoinColumn(name = "cinema_id")
+    private CinemaEntity cinema;
+    @JsonProperty("rows")
+    @OneToMany(mappedBy = "hall")
+    private Set<RowEntity> rows;
+    @JsonProperty("events")
+    @OneToMany(mappedBy = "hall")
+    private Set<EventEntity> events;
 
     public HallEntity() {
         super();
@@ -25,18 +32,6 @@ public class HallEntity extends BaseEntity{
         this.cinema = cinema;
         this.rows = rows;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "cinema_id")
-    private CinemaEntity cinema;
-
-    @JsonProperty("rows")
-    @OneToMany(mappedBy = "hall")
-    private Set<RowEntity> rows;
-
-    @JsonProperty("events")
-    @OneToMany(mappedBy = "hall")
-    private Set<EventEntity> events;
 
     public String getName() {
         return name;

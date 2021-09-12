@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 
 //NOT READY
 @Entity
-public class OrderEntity extends BaseEntity{
+public class OrderEntity extends BaseEntity {
 
     @Embedded
     private Seat seat;

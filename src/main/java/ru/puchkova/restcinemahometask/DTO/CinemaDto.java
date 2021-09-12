@@ -15,7 +15,8 @@ public class CinemaDto {
     @JsonProperty("phone")
     private String phone;
 
-    public CinemaDto(){}
+    public CinemaDto() {
+    }
 
     public CinemaDto(long id, String name, String address, String phone) {
         this.id = id;

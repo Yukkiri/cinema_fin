@@ -20,7 +20,8 @@ public class HallDto {
     @JsonProperty("events")
     private Set<CinemaEventsDto> events;
 
-    public HallDto(){}
+    public HallDto() {
+    }
 
     public HallDto(long id, String name, Set<CinemaEventsDto> eventDto) {
         this.id = id;

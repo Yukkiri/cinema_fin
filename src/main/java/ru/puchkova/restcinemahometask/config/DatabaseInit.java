@@ -34,7 +34,7 @@ public class DatabaseInit {
 
         return args -> {
             log.info("Insert " + repository.save(
-                        new MovieEntity("The Lord of the Rings: The Fellowship of the Ring", "First movie", "2001", "New Zealand, USA")
+                    new MovieEntity("The Lord of the Rings: The Fellowship of the Ring", "First movie", "2001", "New Zealand, USA")
             ));
             log.info("Insert " + repository.save(
                     new MovieEntity("The Lord of the Rings: The Two Towers", "Second movie", "2002", "New Zealand, USA")
@@ -99,7 +99,7 @@ public class DatabaseInit {
         };
     }
 
-    private Set<RowEntity> hallsRows(int rows, int seats){
+    private Set<RowEntity> hallsRows(int rows, int seats) {
         Set<RowEntity> rowSet = new HashSet<>();
         for (int i = 1; i < rows + 1; i++) {
             RowEntity rowEntity = new RowEntity(i, seats);

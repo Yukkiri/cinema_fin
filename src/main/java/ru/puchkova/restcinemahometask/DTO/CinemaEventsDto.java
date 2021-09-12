@@ -2,9 +2,6 @@ package ru.puchkova.restcinemahometask.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Objects;
-import java.util.Set;
-
 public class CinemaEventsDto {
     @JsonProperty("movie")
     private String movie;

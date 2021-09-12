@@ -7,7 +7,6 @@ import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 import ru.puchkova.restcinemahometask.data.entity.MovieEntity;
 
 import java.util.Objects;
-import java.util.Set;
 
 public class EventDto {
 

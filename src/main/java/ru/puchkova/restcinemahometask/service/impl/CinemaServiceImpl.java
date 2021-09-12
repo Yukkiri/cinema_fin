@@ -7,9 +7,7 @@ import ru.puchkova.restcinemahometask.DTO.CinemaDto;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
-import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
-import ru.puchkova.restcinemahometask.data.repository.HallRepository;
 import ru.puchkova.restcinemahometask.service.CinemaService;
 
 import java.util.List;
@@ -44,7 +42,7 @@ public class CinemaServiceImpl implements CinemaService {
         return cinemaDetailed;
     }
 
-    public CinemaEntity searchCinemaByID(Long id){
+    public CinemaEntity searchCinemaByID(Long id) {
         return cinemaRepository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(id));
     }
@@ -57,7 +55,7 @@ public class CinemaServiceImpl implements CinemaService {
         cinemaRepository.deleteById(id);
     }
 
-    public CinemaDto cinemaEntityToDto(CinemaEntity cinemaEntity){
+    public CinemaDto cinemaEntityToDto(CinemaEntity cinemaEntity) {
         return new CinemaDto(cinemaEntity.getId(), cinemaEntity.getName(), cinemaEntity.getAddress(), cinemaEntity.getPhone());
     }
 }

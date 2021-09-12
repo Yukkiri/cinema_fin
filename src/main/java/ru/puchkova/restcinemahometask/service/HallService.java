@@ -3,7 +3,6 @@ package ru.puchkova.restcinemahometask.service;
 import ru.puchkova.restcinemahometask.DTO.HallDto;
 import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 
-import java.util.List;
 import java.util.Set;
 
 public interface HallService {

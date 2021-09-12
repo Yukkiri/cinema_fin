@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.puchkova.restcinemahometask.DTO.MovieDto;
 import ru.puchkova.restcinemahometask.controller.exceptions.MovieNotFoundException;
 import ru.puchkova.restcinemahometask.data.entity.MovieEntity;
-import ru.puchkova.restcinemahometask.data.repository.CinemaRepository;
 import ru.puchkova.restcinemahometask.data.repository.MovieRepository;
 import ru.puchkova.restcinemahometask.service.MovieService;
 
@@ -42,7 +41,7 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.deleteById(id);
     }
 
-    public MovieDto movieEntityToDto(MovieEntity movieEntity){
+    public MovieDto movieEntityToDto(MovieEntity movieEntity) {
         return new MovieDto(movieEntity.getId(), movieEntity.getName(), movieEntity.getDescription(), movieEntity.getReleaseYear(), movieEntity.getCountry());
     }
 }

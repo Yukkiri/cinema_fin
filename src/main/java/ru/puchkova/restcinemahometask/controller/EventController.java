@@ -15,14 +15,13 @@ import java.util.stream.Collectors;
 public class EventController {
 
     private final EventServiceImpl eventService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     public EventController(EventServiceImpl eventService) {
         this.eventService = eventService;
     }
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public List<EventDto> all() {

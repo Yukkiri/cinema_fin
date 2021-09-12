@@ -16,14 +16,13 @@ import java.util.stream.Collectors;
 public class MovieController {
 
     private final MovieServiceImpl movieService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     public MovieController(MovieServiceImpl movieService) {
         this.movieService = movieService;
     }
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
     public List<MovieDto> all() {

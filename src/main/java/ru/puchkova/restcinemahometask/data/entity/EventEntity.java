@@ -4,13 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class EventEntity extends BaseEntity{
+public class EventEntity extends BaseEntity {
 
     private String time;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private MovieEntity movie;
+    @ManyToOne
+    @JoinColumn(name = "hall_id")
+    private HallEntity hall;
+    @OneToMany(mappedBy = "event")
+    private Set<OrderEntity> orders;
 
     public EventEntity() {
         super();
@@ -22,17 +29,6 @@ public class EventEntity extends BaseEntity{
         this.movie = movie;
         this.hall = hall;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
-    private MovieEntity movie;
-
-    @ManyToOne
-    @JoinColumn(name = "hall_id")
-    private HallEntity hall;
-
-    @OneToMany(mappedBy = "event")
-    private Set<OrderEntity> orders;
 
     public String getTime() {
         return time;

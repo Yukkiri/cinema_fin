@@ -4,6 +4,7 @@ import ru.puchkova.restcinemahometask.data.entity.CustomerEntity;
 
 import java.util.List;
 
+//not ready
 public interface CustomerService {
 
     List<CustomerEntity> getAll();

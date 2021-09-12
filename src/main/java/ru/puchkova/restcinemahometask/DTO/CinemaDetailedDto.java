@@ -1,14 +1,11 @@
 package ru.puchkova.restcinemahometask.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ru.puchkova.restcinemahometask.data.entity.CinemaEntity;
-import ru.puchkova.restcinemahometask.data.entity.HallEntity;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class CinemaDetailedDto{
+public class CinemaDetailedDto {
 
     @JsonProperty("id")
     private long id;
@@ -94,7 +91,7 @@ public class CinemaDetailedDto{
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", halls='" +  '\'' +
+                ", halls='" + '\'' +
                 '}';
     }
 }
